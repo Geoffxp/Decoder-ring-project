@@ -63,7 +63,6 @@ const polybiusModule = (function () {
           // if the first digit is a space or puncuation it adds it
           // and only moves up one digit
           message += current[0];
-          
         }
         else if(current === "42"){
           message += "(i/j)";
