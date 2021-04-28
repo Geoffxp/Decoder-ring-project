@@ -50,5 +50,10 @@ describe("polybius()", () => {
             const actual = polybiusModule.polybius("112131 112131", false);
             expect(actual).to.equal(expected);
         });
+      it("leaves puncuation as is", () => {
+            const expected = "abc!! abc...";
+            const actual = polybiusModule.polybius("112131!! 112131...", false);
+            expect(actual).to.equal(expected);
+        });
     })
 });
