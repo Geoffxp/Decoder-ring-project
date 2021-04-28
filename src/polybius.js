@@ -24,8 +24,15 @@ const polybiusModule = (function () {
   // helper function that returns 0 if digits in message are
   // even and 1 if they are odd
   function lengthTester(inputMessage){
-    const test = inputMessage.split(" ").join("");
-    return (test.length % 2);
+    inputMessage = inputMessage.toLowerCase();
+    const test = ""
+    for(char in inputMessage){
+      const current = inputMessage.charCodeAt(char);
+      if(current >= 97 || current <= 122){
+        test += current;
+      }
+    }
+    return (test.length % 2 === 0);
   }
 
   function polybius(input, encode = true) {
@@ -54,16 +61,16 @@ const polybiusModule = (function () {
     else{
       for(let i = 0; i < input.length; i++){
         // testing for valid input
-        if(lengthTester(input) === 1){
+        if(!lengthTester(input)){
           return false;
         }
         // takes message 2 digits at a time to be decoded
         // according to the library
         let current = input.slice(i, i+2);
-        if(current.slice(0, 1) === " "){
+        if(current.charCodeAt(0) < 97 || current.charCodeAt(0) > 122){
           // if the first digit is a space it adds a space 
           // and only moves up one digit
-          message += " ";
+          message += current;
         }
         else if(current === "42"){
           message += "(i/j)";
