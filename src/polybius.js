@@ -25,7 +25,7 @@ const polybiusModule = (function () {
   // even and 1 if they are odd
   function lengthTester(inputMessage){
     inputMessage = inputMessage.toLowerCase();
-    const test = ""
+    let test = ""
     for(char in inputMessage){
       const current = inputMessage.charCodeAt(char);
       if(current >= 97 || current <= 122){
