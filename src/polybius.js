@@ -1,8 +1,3 @@
-// Please refrain from tampering with the setup code provided here,
-// as the index.html and test files rely on this setup to work properly.
-// Only add code (e.g., helper methods, variables, etc.) within the scope
-// of the anonymous function on line 6
-
 const polybiusModule = (function () {
   // you can add any code you want within this function scope
   const alphabet = [
@@ -21,11 +16,15 @@ const polybiusModule = (function () {
     {letter: "y", code: "45"}, {letter: "z", code: "55"},
     {letter: "i/j", code: "42"}
   ]
-  // helper function that returns 0 if digits in message are
-  // even and 1 if they are odd
+  // helper function that returns true if digits in message are even
   function lengthTester(inputMessage){
-    const test = inputMessage.split(" ").join("");
-    return (test.length % 2);
+    let test = ""
+    for(char in inputMessage){
+      if(!isNaN(parseFloat(inputMessage[char]))){
+        test += inputMessage[char];
+      }
+    }
+    return (test.length % 2 === 0);
   }
 
   function polybius(input, encode = true) {
@@ -54,16 +53,17 @@ const polybiusModule = (function () {
     else{
       for(let i = 0; i < input.length; i++){
         // testing for valid input
-        if(lengthTester(input) === 1){
-          return false;
+        if(!lengthTester(input)){
+          return lengthTester(input);
         }
         // takes message 2 digits at a time to be decoded
         // according to the library
         let current = input.slice(i, i+2);
-        if(current.slice(0, 1) === " "){
-          // if the first digit is a space it adds a space 
+        if(isNaN(parseFloat(current.slice(0, 1)))){
+          // if the first digit is a space or puncuation it adds it
           // and only moves up one digit
-          message += " ";
+          message += current[0];
+          
         }
         else if(current === "42"){
           message += "(i/j)";
