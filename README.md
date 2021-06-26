@@ -16,13 +16,13 @@ Then give each letter a unique value pair within the square, going acrross the t
 I and J share a box.
 This is the premise for a polybius cypher and it is what the program completes, both encoding and decoding.
 Messages that are impossible to decode (odd amount of characters, not including puncuation) throw an error.
-_____________________
-  | 1 | 2 | 3 | 4 | 5 
+
+`0 | 1 | 2 | 3 | 4 | 5 
 1 | A | B | C | D | E
 2 | F | G | H (I/J) K 
 3 | L | M | N | O | P 
 4 | Q | R | S | T | U 
-5 | V | W | X | Y | Z
+5 | V | W | X | Y | Z`
 
 ## Substitution
 
